@@ -10,3 +10,9 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 - `npx create-next-app -e with-tailwindcss ./`
 - `npm install graphql graphql-request html-react-parser moment react-multi-carousel sass`
+
+## Notes
+
+- `getStaticProps` - Next.js
+- When should I use getStaticProps?
+- - The data comes from a headless CMS
