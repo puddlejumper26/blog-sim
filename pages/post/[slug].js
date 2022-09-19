@@ -39,7 +39,10 @@ export default PostDetails;
 
 // Fetch data at build time
 export async function getStaticProps({ params }) {
+  // console.log(5555, params);
+
   const data = await getPostDetails(params.slug);
+  // console.log(7777, data);
   return {
     props: {
       post: data,
@@ -53,9 +56,13 @@ export async function getStaticProps({ params }) {
 // next js would know all the possible paths
 export async function getStaticPaths() {
   const posts = await getPosts();
+  console.log(
+    6666,
+    posts.map(({ node: { slug } }) => ({ params: { slug: slug } }))
+  );
   return {
     //obtain a specific post by destructuring the node, further destructuring the slug
-    paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
+    paths: posts.map(({ node: { slug } }) => ({ params: { slug: slug } })),
     fallback: false,
   };
 }

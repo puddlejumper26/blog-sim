@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
 import moment from "moment";
 import Link from "next/link";
 
@@ -8,7 +10,6 @@ import { getSimilarPosts, getRecentPosts } from "../services";
 
 const PostWidget = ({ categories, slug }) => {
   const [relatedPosts, setRelatedPosts] = useState([]);
-
   useEffect(() => {
     if (slug) {
       getSimilarPosts(categories, slug).then((result) => {
@@ -19,7 +20,10 @@ const PostWidget = ({ categories, slug }) => {
         setRelatedPosts(result);
       });
     }
-  }, [slug]);
+  }, [slug]); // this useEffect will only changes when the slug is changed
+
+  // const router = useRouter();
+  // console.log(7777, router);
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">

@@ -39,7 +39,7 @@ export const getPosts = async () => {
 
 export const getRecentPosts = async () => {
   const query = gql`
-    query GetPostDetails {
+    query GetPostDetailsOne {
       posts(orderBy: createdAt_ASC, last: 3) {
         title
         featuredImg {
@@ -59,7 +59,7 @@ export const getRecentPosts = async () => {
 // where ==> means do not display $slug value parameter, which is the current one but to display the related ones
 export const getSimilarPosts = async (categories, slug) => {
   const query = gql`
-    query GetPostDetails($slug: String!, $categories: [String!]) {
+    query GetPostDetailsTwo($slug: String!, $categories: [String!]) {
       posts(
         where: {
           slug_not: $slug
@@ -99,7 +99,7 @@ export const getCategories = async () => {
 // only needs to obtain certain post,
 export const getPostDetails = async (slug) => {
   const query = gql`
-    query GetPostDetails($slug: String!) {
+    query GetPostDetailsThree($slug: String!) {
       post(where: { slug: $slug }) {
         author {
           bio
