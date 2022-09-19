@@ -76,6 +76,7 @@ export const getSimilarPosts = async (categories, slug) => {
       }
     }
   `;
+  //  note here the content inside of { }, is the parameter passed in
   const result = await request(graphqlAPI, query, { slug, categories });
 
   return result.posts;
@@ -97,10 +98,10 @@ export const getCategories = async () => {
 };
 
 // only needs to obtain certain post,
-export const getPostDetails = async (slug) => {
+export const getPostDetails = async (newSlug) => {
   const query = gql`
-    query GetPostDetailsThree($slug: String!) {
-      post(where: { slug: $slug }) {
+    query GetPostDetailsThree($newSlug: String!) {
+      post(where: { slug: $newSlug }) {
         author {
           bio
           name
@@ -127,7 +128,7 @@ export const getPostDetails = async (slug) => {
     }
   `;
 
-  const result = await request(graphqlAPI, query, { slug });
+  const result = await request(graphqlAPI, query, { newSlug });
 
   return result.post;
 };
