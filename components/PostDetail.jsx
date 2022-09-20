@@ -4,6 +4,13 @@ import moment from "moment";
 
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
+    // console.log("********************************");
+    // console.log("index: " + index);
+    // console.log("text: " + text);
+    // console.log("obj: " + obj.bold);
+    // console.log("type: " + type);
+    // console.log("********************************");
+
     let modifiedText = text;
 
     if (obj) {

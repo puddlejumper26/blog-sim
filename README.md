@@ -46,3 +46,7 @@ export default function Post({ post }) {
   // Render post...
 }
 ```
+
+- `Image` from "next/image";
+- - achieve good [Core Web Vitals](https://nextjs.org/learn/seo/web-performance)
+- - factored into Google's search rankings
