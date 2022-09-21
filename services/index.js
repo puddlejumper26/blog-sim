@@ -132,3 +132,19 @@ export const getPostDetails = async (newSlug) => {
 
   return result.post;
 };
+/**
+ *
+ * obtain data from current project, that is one of the merits from Nextjs
+ * http request methods to this current project, nextjs backend
+ * there is no need to have a separate node server
+ *
+ * graphCMS allows our own backend to interact with service to actually submit a comment to graphCMS,
+ * and then we could see/manage it directly from the graphCMS dashboard
+ */
+export const submitComment = async (obj) => {
+  const result = await fetch("/api/comments", {
+    method: "POST",
+    body: JSON.stringify(obj),
+  });
+  return result.json();
+};
